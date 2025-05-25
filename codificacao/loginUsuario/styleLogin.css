@@ -71,6 +71,7 @@ body {
     padding: 10px 60px;
     margin-bottom: 20px;
     font-size: 15px;
+    box-shadow: 5px 5px 10px #828282;
 }
 
 #divBtnLogin {

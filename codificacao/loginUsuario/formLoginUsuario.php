@@ -12,18 +12,18 @@
 <body>
     <div id="caixaLogin">
         <div id="bgComLogo">
-            <img src="assets/backgroundLogin.png" alt="logo da plataforma">
+            <img src="../assets/backgroundLogin.png" alt="logo da plataforma">
         </div>
         <div id="formLogin">
             <h1 id="tituloLogin">LOGIN</h1>
-            <form action="" method="post">
-                <label for="nomeUsuarioOuEmail" class="estilizacaoLabel">Nome de usuário ou e-mail:</label>
+            <form action="logarUsuario.php" method="post">
+                <label for="email" class="estilizacaoLabel">Email:</label>
                 <div class="Input">
-                    <input type="text" name="nomeUsuarioOuEmail" id="nomeUsuarioOuEmail" class="estilizacaoInput" placeholder="Ex.: Maria123";>
+                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" required>
                 </div>
                 <label for="senha" class="estilizacaoLabel">Senha:</label>
                 <div class="Input">
-                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321";>    
+                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" required>    
                 </div>
                 <div id="divBtnLogin">
                 <input type="submit" value="LOGIN" id="btnLogin">    
@@ -32,5 +32,6 @@
             <p>Novo aqui? <u><a href="">Criar conta</a></u></p>
         </div>
     </div>
+    <?php include_once'conexao.php'; ?>
 </body>
 </html>
