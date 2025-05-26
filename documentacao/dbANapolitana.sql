@@ -1,9 +1,18 @@
 CREATE DATABASE plataformaANapolitana;
 USE plataformaANapolitana;
 
+
+CREATE TABLE usuario (
+  id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(80) NOT NULL,
+  email VARCHAR(50) NOT NULL,
+  senha VARCHAR(64) NOT NULL,
+  situacao INT(1)
+);
+
 CREATE TABLE produto (
   id_produto INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(50) NOT NULL,
+  nome_produto VARCHAR(50) NOT NULL,
   categoria VARCHAR(50),
   preco DECIMAL(10,2) NOT NULL
 );
