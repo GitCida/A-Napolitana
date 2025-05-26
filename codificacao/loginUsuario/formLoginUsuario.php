@@ -19,7 +19,7 @@
             <form action="logarUsuario.php" method="post">
                 <label for="email" class="estilizacaoLabel">Email:</label>
                 <div class="Input">
-                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" required>
+                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off required>
                 </div>
                 <label for="senha" class="estilizacaoLabel">Senha:</label>
                 <div class="Input">

@@ -6,7 +6,7 @@ if(isset ($_POST['email']) && !empty($_POST['email']) && isset ($_POST['senha'])
     $email = TRIM($_POST['email']);
     $senha = TRIM($_POST['senha']);
     if ($u->login($email, $senha) == true) {
-        if(isset($_SESSION['IDuser'])){
+        if(isset($_SESSION['id_user'])){
             header("Location: ../telaInicial/index.php");
             exit();
         }
