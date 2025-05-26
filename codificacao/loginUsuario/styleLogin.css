@@ -9,21 +9,27 @@
 body {
     background-image: linear-gradient(45deg
     , #d8798c, #FFF4F0, #996b5c);
+    background-size: cover;
     color: #67301D;
     display: flex;
     justify-content: center;
     font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
+    height: 100vh;
 }
 
 #caixaLogin {
     display: flex;
-    margin: 70px 120px;
+    margin: 5vh 5vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 #bgComLogo {
     display: flex;
     border-radius: 30px;
     height: 500px;
+    max-height: 500px;
 }
 
 #formLogin {
@@ -33,6 +39,12 @@ body {
     align-items: center;
     background-image: linear-gradient(135deg, #FFF4F0, #E9C8BC);
     border-radius: 0 30px 30px 0;
+    padding: 2rem 3rem;
+    max-width: 500px;
+    max-height: 500px;
+    width: 90vh;
+    height: 500px;
+    box-sizing: border-box;
 }
     
 #tituloLogin {
@@ -44,17 +56,19 @@ body {
 .estilizacaoInput {
     border: none;
     border-radius: 10px;
-    padding: 20px 150px 20px 10px;
+    padding: 20px 90px 20px 10px;
     background-color: #FFF9F6;
-    margin: 0 70px 20px ;
+    margin: 0 2rem 20px 0;
     outline: none;
     color: #67301D;
-    font-size: 15px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 500px;
 }
 
 .estilizacaoLabel {
-    margin: 50px 0 20px 70px;
-    font-size: 20px
+    margin: 20px 0;
+    font-size: 1.25rem;
 }
 
 ::placeholder {
