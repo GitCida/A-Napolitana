@@ -20,7 +20,6 @@ body {
 #caixaLogin {
     display: flex;
     margin: 5vh 5vw;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
