@@ -1,27 +1,22 @@
-<?php 
-if(isset ($_POST['email']) && !empty($_POST['email']) && isset ($_POST['senha']) && !empty($_POST['senha'])) {
-    include_once 'conexao.php';
-    include_once 'UsuarioClass.php';
-    $u = new Usuario();
-    $email = TRIM($_POST['email']);
-    $senha = TRIM($_POST['senha']);
-    if ($u->login($email, $senha) == true) {
-        if(isset($_SESSION['id_user'])){
-            header("Location: telaInicial.php");
-            exit();
-        }
-        else {
-            header("Location: formLoginUsuario.php");
-            exit();
-        }
+<?php
+session_start();
+require_once 'functions.php';
+require_once 'conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $stmt = $conexao->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
+    $stmt->execute(['email' => $email, 'senha' => $senha]);
+    $usuario = $stmt->fetch();
+
+    if ($usuario) {
+        $_SESSION['usuario_id'] = $usuario['id_usuario'];
+        header("Location: telaInicial.php");
+        exit;
+    } else {
+        echo "Email ou senha incorretos!";
     }
-    else {
-        header("Location: formLoginUsuario.php");
-        exit();
-    }
-}
-else {
-    header("Location: formLoginUsuario.php");
-    exit();
 }
 ?>
