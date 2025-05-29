@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
 
     $stmt = $conexao->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
-    $stmt->execute(['email' => $email, 'senha' => $senha]);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':senha', $senha);
+    $stmt->execute();
     $usuario = $stmt->fetch();
 
     if ($usuario) {
