@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $stmt->fetch();
 
     if ($usuario) {
-        $_SESSION['usuario_id'] = $usuario['id_usuario'];
+        $_SESSION['id_usuario'] = $usuario['id_usuario'];
         header("Location: telaInicial.php");
         exit;
     } else {

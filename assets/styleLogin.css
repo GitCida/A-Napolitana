@@ -20,7 +20,6 @@ body {
 #caixaLogin {
     display: flex;
     margin: 5vh 5vw;
-    justify-content: center;
     align-items: center;
 }
 
@@ -43,7 +42,6 @@ body {
     max-height: 500px;
     width: 90vh;
     height: 500px;
-    box-sizing: border-box;
 }
     
 #tituloLogin {
@@ -60,14 +58,14 @@ body {
     margin: 0 2rem 20px 0;
     outline: none;
     color: #67301D;
-    font-size: 1rem;
+    font-size: 17px;
     width: 100%;
     max-width: 500px;
 }
 
 .estilizacaoLabel {
     margin: 20px 0;
-    font-size: 1.25rem;
+    font-size: 20px;
 }
 
 ::placeholder {
@@ -97,11 +95,11 @@ body {
     cursor: pointer;
 }
 
-a {
+#linkCadastro {
     color: #D61637;
 }
 
-a:hover {
+#linkCadastro:hover {
     cursor: pointer;
     color: #7c0015;
 }

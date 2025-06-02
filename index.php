@@ -32,7 +32,7 @@ include'conexao.php';
                 <input type="submit" value="LOGIN" id="btnLogin">    
                 </div>
             </form>
-            <p>Novo aqui? <u><a href="">Criar conta</a></u></p>
+            <p>Novo aqui? <a href="" id="linkCadastro">Criar conta</a></p>
         </div>
     </div>
 </body>

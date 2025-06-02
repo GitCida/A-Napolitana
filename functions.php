@@ -1,5 +1,5 @@
 <?php
 function estaLogado() {
-    return isset($_SESSION['usuario_id']);
+    return isset($_SESSION['id_usuario']);
 }
 ?>
