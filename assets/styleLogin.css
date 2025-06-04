@@ -26,8 +26,8 @@ body {
 #bgComLogo {
     display: flex;
     border-radius: 30px;
-    height: 500px;
-    max-height: 500px;
+    height: 550px;
+    max-height: 550px;
 }
 
 #formLogin {
@@ -39,9 +39,9 @@ body {
     border-radius: 0 30px 30px 0;
     padding: 2rem 3rem;
     max-width: 500px;
-    max-height: 500px;
+    max-height: 550px;
     width: 90vh;
-    height: 500px;
+    height: 550px;
 }
     
 #tituloLogin {
@@ -102,5 +102,15 @@ body {
 #linkCadastro:hover {
     cursor: pointer;
     color: #7c0015;
+}
+
+#mensagemErro {
+    background-color: #ffdddd;
+    color: #a10000;            
+    padding: 15px;
+    border: 1px solid #f5c2c7;
+    border-left: 5px solid #d20000;
+    border-radius: 8px;
+    margin-bottom: 5px;
 }
 

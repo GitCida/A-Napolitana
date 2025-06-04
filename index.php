@@ -1,5 +1,6 @@
 <?php
 include 'conexao.php';
+include 'logarUsuario.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,16 +23,22 @@ include 'conexao.php';
             <form action="logarUsuario.php" method="post">
                 <label for="email" class="estilizacaoLabel">Email:</label>
                 <div class="Input">
-                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off require>
+                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off  value="<?php echo $_SESSION['emailPreenchido'] ?? ''; unset($_SESSION['emailPreenchido']);?>">
                 </div>
                 <label for="senha" class="estilizacaoLabel">Senha:</label>
                 <div class="Input">
-                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" require>    
+                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321">    
                 </div>
                 <div id="divBtnLogin">
                 <input type="submit" value="LOGIN" id="btnLogin">    
                 </div>
             </form>
+            <?php
+                if (isset($_SESSION['mensagemErro'])) {
+                    echo '<div id="mensagemErro">' . $_SESSION['mensagemErro'] . '</div>';
+                    unset($_SESSION['mensagemErro']);
+                }
+            ?>
             <p>Novo aqui? <a href="" id="linkCadastro">Criar conta</a></p>
         </div>
     </div>
