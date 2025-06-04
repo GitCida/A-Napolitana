@@ -3,10 +3,12 @@ session_start();
 require_once 'functions.php';
 require_once 'conexao.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+$mensagemErro = '';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = TRIM($_POST['email']);
+    $senha = TRIM($_POST['senha']);
+}
     $stmt = $conexao->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':senha', $senha);
@@ -18,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: telaInicial.php");
         exit;
     } else {
-        echo "Email ou senha incorretos!";
+        header("Location: index.php");
     }
-}
 ?>

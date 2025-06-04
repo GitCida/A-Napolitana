@@ -1,5 +1,5 @@
-CREATE DATABASE dbANapolitana;
-USE dbANapolitana;
+CREATE DATABASE dbanapolitana;
+USE dbanapolitana;
 
 CREATE TABLE categorias (
   id_categoria int(11) NOT NULL AUTO_INCREMENT,

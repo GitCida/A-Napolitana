@@ -1,5 +1,5 @@
 <?php
-include'conexao.php';
+include 'conexao.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,11 +22,11 @@ include'conexao.php';
             <form action="logarUsuario.php" method="post">
                 <label for="email" class="estilizacaoLabel">Email:</label>
                 <div class="Input">
-                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off required>
+                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off require>
                 </div>
                 <label for="senha" class="estilizacaoLabel">Senha:</label>
                 <div class="Input">
-                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" required>    
+                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" require>    
                 </div>
                 <div id="divBtnLogin">
                 <input type="submit" value="LOGIN" id="btnLogin">    
