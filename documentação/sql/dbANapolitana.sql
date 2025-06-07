@@ -7,15 +7,6 @@ CREATE TABLE categorias (
   PRIMARY KEY (id_categoria)
 );
 
-CREATE TABLE estoque (
-  id_estoque int(11) NOT NULL AUTO_INCREMENT,
-  quantidade_atual int(11) DEFAULT NULL,
-  data_atualizacao datetime NOT NULL,
-  unidadesMedidas_id_unidademedida int(11) NOT NULL,
-  produtos_id_produto int(11) NOT NULL,
-  PRIMARY KEY (id_estoque)
-);
-
 CREATE TABLE formapagamento (
   id_formaPagamento int(11) NOT NULL AUTO_INCREMENT,
   nome_formaPagamento varchar(20) NOT NULL,
@@ -39,12 +30,6 @@ CREATE TABLE produtos (
   PRIMARY KEY (id_produto)
 );
 
-CREATE TABLE unidadesmedidas (
-  id_unidadeMedida int(11) NOT NULL AUTO_INCREMENT,
-  sigla varchar(10) NOT NULL,
-  PRIMARY KEY (id_unidadeMedida)
-);
-
 CREATE TABLE usuarios (
   id_usuario int(11) NOT NULL AUTO_INCREMENT,
   nome_usuario varchar(80) NOT NULL,
@@ -61,10 +46,6 @@ CREATE TABLE vendas (
   formaPagamento_id_formaPagamento int(11) NOT NULL,
   PRIMARY KEY (id_venda)
 );
-
-ALTER TABLE estoque
-  ADD CONSTRAINT produto_id_produto FOREIGN KEY (produtos_id_produto) REFERENCES produtos(id_produto),
-  ADD CONSTRAINT unidadesMedidas_id_unidademedida FOREIGN KEY (unidadesMedidas_id_unidademedida) REFERENCES unidadesmedidas(id_unidadeMedida) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE itemvenda
   ADD CONSTRAINT produtos_id_produto FOREIGN KEY (produtos_id_produto) REFERENCES produtos(id_produto) ON DELETE CASCADE ON UPDATE CASCADE,
