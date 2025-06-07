@@ -79,9 +79,10 @@ body {
     color: #FFF9F6;
     border: none;
     border-radius: 10px;
-    padding: 10px 60px;
+    padding: 5px 70px;
     margin: 20px 60px;
-    font-size: 15px;
+    font-size: 20px;
+    font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
     box-shadow: 5px 5px 10px #828282;
 }
 
@@ -97,6 +98,7 @@ body {
 
 #linkCadastro {
     color: #D61637;
+    font-family: 'Baloo 2', Arial, Helvetica, sans-serif;
 }
 
 #linkCadastro:hover {
