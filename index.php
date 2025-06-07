@@ -23,11 +23,11 @@ include 'logarUsuario.php';
             <form action="logarUsuario.php" method="post">
                 <label for="email" class="estilizacaoLabel">Email:</label>
                 <div class="Input">
-                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off  value="<?php echo $_SESSION['emailPreenchido'] ?? ''; unset($_SESSION['emailPreenchido']);?>">
+                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off require value="<?php echo $_SESSION['emailPreenchido'] ?? ''; unset($_SESSION['emailPreenchido']);?>">
                 </div>
                 <label for="senha" class="estilizacaoLabel">Senha:</label>
                 <div class="Input">
-                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321">    
+                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" require>    
                 </div>
                 <div id="divBtnLogin">
                 <input type="submit" value="LOGIN" id="btnLogin">    
@@ -39,7 +39,7 @@ include 'logarUsuario.php';
                     unset($_SESSION['mensagemErro']);
                 }
             ?>
-            <p>Novo aqui? <a href="" id="linkCadastro">Criar conta</a></p>
+            <p>Novo aqui? <a href="http://localhost/aNapolitana/cadastroUsuario.php" id="linkCadastro">Criar conta</a></p>
         </div>
     </div>
 </body>
