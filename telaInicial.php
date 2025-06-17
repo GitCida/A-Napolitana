@@ -24,7 +24,7 @@ include 'protection.php';
         </div>
         <nav>
             <ul id="menu">
-                <li><a href="">Início</a></li>
+                <li><a href="http://localhost/aNapolitana/telaInicial.php">Início</a></li>
                 <li><a href="">Serviços</a></li>
                 <li><a href="">Contato</a></li>
                 <li><a href="">Sobre</a></li>
@@ -36,15 +36,15 @@ include 'protection.php';
     </header>
     <aside>
         <h2>MENU</h2>
-        <button class="btnAside">
             <a class="linkAside" href="http://localhost/aNapolitana/readProdutos.php">Cadastrar e gerenciar produtos</a>
-        </button>
-        <button class="btnAside">
-            <a class="linkAside" href="http://localhost/aNapolitana/readProdutos.php">Registrar e gerenciar vendas</a>
-        </button>
+            <a class="linkAside" href="http://localhost/aNapolitana/readVendas.php">Registrar e gerenciar vendas</a>
+            <a id="logout" href="logout.php">Sair da conta</a>
     </aside>
     <footer>
-        <a id="logout" href="logout.php">Sair</a>
+        <div class="footer-content">
+            <p>&copy; 2025 A Napolitana. Todos os direitos reservados.</p>
+            <p>Desenvolvido por 27 - Maria Aparecida Carvalho de Oliveira</p>
+        </div>
     </footer>
 </body>
 </html>

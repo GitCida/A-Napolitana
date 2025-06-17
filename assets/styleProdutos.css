@@ -65,16 +65,19 @@ nav ul li a:hover {
 aside {
     width: 250px;
     background-color: #FFF4F0;
-    box-shadow: 5px 0 10px rgba(0,0,0,0.250);
+    box-shadow: 5px 10px 10px rgba(0,0,0,0.250);
     text-align: center;
     font-family: 'Caprasimo', sans-serif;
     height: 100vh;
     padding-top: 30px;
+    position: fixed;
+    border-top: 1px solid #40241A;
 }
 
     aside h2 {
     font-size: 1.2em;
     margin-bottom: 15px;
+    color: #40241A;
     }
 
 .linkAside {
@@ -108,7 +111,7 @@ background-color: #C7B3AC;
 }
 
 #logout {
-    color: #FFF4F0;
+    color: #40241A;
     font-family: 'Caprasimo', sans-serif;
 }
 
@@ -119,4 +122,7 @@ footer {
     background-color: #26150F;
     text-align: end;
     font-size: 20px;
+    position: fixed;
+    bottom: 0;
+    color: #FFF4F0;
 }
