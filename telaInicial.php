@@ -40,8 +40,26 @@ include 'protection.php';
             <a class="linkAside" href="http://localhost/aNapolitana/readVendas.php">Registrar e gerenciar vendas</a>
             <a id="logout" href="logout.php">Sair da conta</a>
     </aside>
+    <section>
+        <a class="linkBtn" href="http://localhost/aNapolitana/readProdutos.php">
+            <div class="btnTelaInicial" id="btnProdutos">
+                    <img class="iconesTelaInicial" src="assets/icone_iceCream.png" alt="icone de sorvete">
+                    <p>
+                        Cadastrar e gerenciar produtos
+                    </p>
+            </div>
+        </a>
+        <a class="linkBtn" href="http://localhost/aNapolitana/readVendas.php"></a>
+            <div class="btnTelaInicial" id="btnVendas">
+                <img class="iconesTelaInicial" src="assets/icone_carrinhoDeCompras.png" alt="icone de carrinho de compras">
+                <p>
+                    Registrar e gerenciar vendas
+                </p>
+            </div>
+        </a>
+    </section>
     <footer>
-        <div class="footer-content">
+        <div class="footerConteudo">
             <p>&copy; 2025 A Napolitana. Todos os direitos reservados.</p>
             <p>Desenvolvido por 27 - Maria Aparecida Carvalho de Oliveira</p>
         </div>

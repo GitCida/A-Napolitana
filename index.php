@@ -39,7 +39,7 @@ include 'logarUsuario.php';
                     unset($_SESSION['mensagemErro']);
                 }
             ?>
-            <p>Novo aqui? <a href="http://localhost/aNapolitana/cadastroUsuario.php" id="linkCadastro">Criar conta</a></p>
+            <p>Novo aqui? <a href="http://localhost/aNapolitana/formCadastroUsuario.php" id="linkCadastro">Criar conta</a></p>
         </div>
     </div>
 </body>

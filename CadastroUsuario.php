@@ -1,43 +1,49 @@
-<?php
+<?php 
+session_start();
 include 'conexao.php';
+
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && !empty($_POST["nomeUsuario"]) && !empty($_POST["email"]) && !empty($_POST["senha"])) {
+    $nomeUsuario = trim($_POST['nomeUsuario']);
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['senha']);
+
+    try {
+        $stmt = $conexao->prepare("SELECT * FROM usuarios WHERE email = :email OR nome_usuario = :nomeUsuario");
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':nomeUsuario', $nomeUsuario);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $_SESSION['mensagemErro'] = "Já existe um usuário com este e-mail ou nome de usuário.";
+            $_SESSION['dadosPreenchidos'] = [
+        'nomeUsuario' => $nomeUsuario,
+        'email' => $email];
+            header("Location: formCadastroUsuario.php");
+            exit;
+        }
+
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+        $stmt = $conexao->prepare("INSERT INTO usuarios (nome_usuario, email, senha) VALUES (:nomeUsuario, :email, :senha)");
+        $stmt->bindValue(':nomeUsuario', $nomeUsuario);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':senha', $senhaHash);
+
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                $idUsuario = $conexao->lastInsertId();
+                $_SESSION['id_usuario'] = $idUsuario;
+                header("Location: telaInicial.php");
+                exit;
+            } else {
+                echo "Erro ao efetivar cadastro.";
+            }
+        } else {
+            throw new PDOException("Erro: Não foi possível executar a declaração SQL.");
+        }
+
+    } catch (PDOException $erro) {
+        echo "Erro: " . $erro->getMessage();
+    }
+}
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de usuário A Napolitana</title>
-    <link rel="stylesheet" href="assets/styleCadastroUsuario.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div id="caixaCadastro">
-        <div id="bgComLogo">
-            <img src="assets/backgroundLogin.png" alt="logo da plataforma">
-        </div>
-        <div id="formCadastro">
-            <h1 id="tituloCadastro">CADASTRO</h1>
-            <form action="" method="post">
-                <label for="nomeUsuario" class="estilizacaoLabel">Nome de usuário:</label>
-                <div class="Input">
-                    <input type="text" name="nomeUsuario" id="nomeUsuario" class="estilizacaoInput" placeholder="Ex.: Maria_123">    
-                </div>
-                <label for="email" class="estilizacaoLabel">Email:</label>
-                <div class="Input">
-                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off require>
-                </div>
-                <label for="senha" class="estilizacaoLabel">Senha:</label>
-                <div class="Input">
-                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321">    
-                </div>
-                <div id="divBtnCadastro">
-                <input type="submit" value="CADASTRAR" id="btnCadastro">    
-                </div>
-            </form>
-            <p>Já tem uma conta? <a href="http://localhost/aNapolitana/index.php" id="linkLogin">Fazer login</a></p>
-        </div>
-    </div>
-</body>
-</html>

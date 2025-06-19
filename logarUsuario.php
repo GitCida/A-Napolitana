@@ -26,13 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $senha = trim($_POST['senha']);
 
-    $stmt = $conexao->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha");
+    $stmt = $conexao->prepare("SELECT id_usuario, senha FROM usuarios WHERE email = :email");
     $stmt->bindValue(':email', $email);
-    $stmt->bindValue(':senha', $senha);
     $stmt->execute();
     $usuario = $stmt->fetch();
 
-    if ($usuario) {
+    if ($usuario && password_verify($senha, $usuario['senha'])) {
         $_SESSION['id_usuario'] = $usuario['id_usuario'];
         header("Location: telaInicial.php");
         exit;
