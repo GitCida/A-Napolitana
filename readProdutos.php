@@ -45,6 +45,42 @@ include 'conexao.php';
             <a id="logout" href="logout.php">Sair da conta</a>
         </div>
     </aside>
+    <section>
+        <?php
+            if (isset($_GET['msg'])) {
+                echo '<div class="mensagem-sucesso">' . htmlspecialchars($_GET['msg']) . '</div>';
+            }
+        ?>
+
+        <a href="http://localhost/aNapolitana/formCreateProdutos.php">
+            <button id="btnAdicionar">ADICIONAR</button>
+        </a>
+        <table border="1">
+            <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Preço (R$)</th>
+                <th>Marca</th>
+                <th>Ações</th>
+            </tr>
+            <?php
+                try {
+                    $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, produtos.preco,categorias.nome_categoria, marcas.nome_marca FROM produtos INNER JOIN categorias ON produtos.categorias_id_categoria = categorias.id_categoria INNER JOIN marcas ON produtos.marcas_id_marca = marcas.id_marca");
+                    if ($stmt->execute()) {
+                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                            echo "<tr>";
+                            echo "<td>".$rs->nome_produto."</td><td>".$rs->nome_categoria."</td><td>".$rs->preco."</td><td>".$rs->nome_marca."</td><td><center><a href=\"\">[Alterar]</a>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."<a href=\"\">[Excluir]</a></center></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                    }
+                } catch (PDOException $erro) {
+                    echo "Erro: ".$erro->getMessage();
+                }
+            ?>
+</table>
+    </section>
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 A Napolitana. Todos os direitos reservados.</p>

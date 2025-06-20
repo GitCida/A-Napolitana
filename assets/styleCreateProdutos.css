@@ -99,22 +99,9 @@ aside {
 
 section {
     text-align: end;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-
 }
 
-table {
-    margin: 0 50px 0px 280px;
-    text-align: start;
-}
-
-tr {
-    font-family: 'Caprasimo',  sans-serif;
-}
-
-#btnAdicionar {
+#btnCadastrar {
     background-color: #9CB97B;
     color: white;
     border-radius: 10px;
@@ -125,7 +112,7 @@ tr {
     margin: 20px 50px;
 }
 
-#btnAdicionar:hover {
+#btnCadastrar:hover {
     background-color: #647E46;
     cursor: pointer;
 }
@@ -146,19 +133,6 @@ background-color: #C7B3AC;
 #logout {
     color: #40241A;
     font-family: 'Caprasimo', sans-serif;
-}
-
-.mensagem-sucesso {
-    background-color: #d4edda;
-    font-family: 'Baloo 2', sans-serif;
-    color: #155724;
-    padding: 10px;
-    margin: 15px 0;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;        
-    border-left: 5px solid #155724;
-    border-radius: 8px;
-    margin-bottom: 5px;
 }
 
 footer {

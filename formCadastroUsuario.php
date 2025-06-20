@@ -26,15 +26,15 @@ $email = isset($_SESSION['dadosPreenchidos']['email']) ? $_SESSION['dadosPreench
                 <input type="hidden" name="ID">
                 <label for="nomeUsuario" class="estilizacaoLabel">Nome de usuário:</label>
                 <div class="Input">
-                    <input type="text" name="nomeUsuario" id="nomeUsuario" class="estilizacaoInput" placeholder="Ex.: Maria_123" value="<?php echo htmlspecialchars($nomeUsuario); ?>" require>    
+                    <input type="text" name="nomeUsuario" id="nomeUsuario" class="estilizacaoInput" placeholder="Ex.: Maria_123" value="<?php echo htmlspecialchars($nomeUsuario); ?>" required>    
                 </div>
                 <label for="email" class="estilizacaoLabel">Email:</label>
                 <div class="Input">
-                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off value="<?php echo htmlspecialchars($email); ?>" require>
+                    <input type="email" name="email" id="email" class="estilizacaoInput" placeholder="Ex.: Maria1234@gmail.com" autocomplete=off value="<?php echo htmlspecialchars($email); ?>" required>
                 </div>
                 <label for="senha" class="estilizacaoLabel">Senha:</label>
                 <div class="Input">
-                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" require>    
+                    <input type="password" name="senha" id="senha" class="estilizacaoInput" placeholder="Ex.: Maria4321" required>    
                 </div>
                 <div id="divBtnCadastro">
                 <input type="submit" value="CADASTRAR" id="btnCadastro">    
