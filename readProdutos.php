@@ -1,6 +1,6 @@
 <?php
-include 'protection.php';
-include 'conexao.php';
+include_once 'protection.php';
+include_once 'conexao.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,7 @@ include 'conexao.php';
                     if ($stmt->execute()) {
                         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                             echo "<tr>";
-                            echo "<td>".$rs->nome_produto."</td><td>".$rs->nome_categoria."</td><td>".$rs->preco."</td><td>".$rs->nome_marca."</td><td><center><a href=\"\">[Alterar]</a>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."<a href=\"\">[Excluir]</a></center></td>";
+                            echo "<td>".$rs->nome_produto."</td><td>".$rs->nome_categoria."</td><td>".$rs->preco."</td><td>".$rs->nome_marca."</td><td><center><a href=\"\">[Alterar]</a>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."<a href=\"deleteProdutos.php?id=".$rs->id_produto."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a></center></td>";
                             echo "</tr>";
                         }
                     } else {

@@ -41,6 +41,43 @@ include 'conexao.php';
         <a id="linkVendas" class="linkAside" href="http://localhost/aNapolitana/readVendas.php">Registrar e gerenciar vendas</a>
         <a id="logout" href="logout.php">Sair da conta</a>
     </aside>
+    </aside>
+    <section>
+        <?php
+            if (isset($_GET['msg'])) {
+                echo '<div class="mensagem-sucesso">' . htmlspecialchars($_GET['msg']) . '</div>';
+            }
+        ?>
+
+        <a href="http://localhost/aNapolitana/formCreateVendas.php">
+            <button id="btnAdicionar">ADICIONAR</button>
+        </a>
+        <table border="1">
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Pagamento (R$)</th>
+                <th>Total (R$)</th>
+                <th>Ações</th>
+            </tr>
+            <?php
+                try {
+                    $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, itemvenda.quantidade_venda, formaPagamento.nome_formaPagamento, vendas.valor_venda FROM itemVenda INNER JOIN produtos ON itemvenda.produtos_id_produto = produtos.id_produto INNER JOIN vendas ON itemvenda.vendas_id_venda = vendas.id_venda INNER JOIN formaPagamento ON vendas.formaPagamento_id_formaPagamento = formapagamento.id_formaPagamento;");
+                    if ($stmt->execute()) {
+                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                            echo "<tr>";
+                            echo "<td>".$rs->nome_produto."</td><td>".$rs->quantidade_venda."</td><td>".$rs->nome_formaPagamento."</td><td>".$rs->valor_venda."</td><td><center><a href=\"\">[Alterar]</a>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."<a href=\"\">[Excluir]</a></center></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                    }
+                } catch (PDOException $erro) {
+                    echo "Erro: ".$erro->getMessage();
+                }
+            ?>
+</table>
+    </section>
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 A Napolitana. Todos os direitos reservados.</p>
