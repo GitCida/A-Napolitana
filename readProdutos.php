@@ -69,7 +69,17 @@ include_once 'conexao.php';
                     if ($stmt->execute()) {
                         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                             echo "<tr>";
-                            echo "<td>".$rs->nome_produto."</td><td>".$rs->nome_categoria."</td><td>".$rs->preco."</td><td>".$rs->nome_marca."</td><td><center><a href=\"\">[Alterar]</a>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."<a href=\"deleteProdutos.php?id=".$rs->id_produto."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a></center></td>";
+                            echo "<td>".$rs->nome_produto."</td>";
+                            echo "<td>".$rs->nome_categoria."</td>";
+                            echo "<td>".$rs->preco."</td>";
+                            echo "<td>".$rs->nome_marca."</td>";
+                            echo "<td>
+                                <center>
+                                    <a href=\"updateProdutos.php?id=".$rs->id_produto."\">[Alterar]</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href=\"deleteProdutos.php?id=".$rs->id_produto."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a>
+                                </center>
+                                </td>";
                             echo "</tr>";
                         }
                     } else {

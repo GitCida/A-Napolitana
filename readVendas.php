@@ -62,11 +62,21 @@ include 'conexao.php';
             </tr>
             <?php
                 try {
-                    $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, itemvenda.quantidade_venda, formaPagamento.nome_formaPagamento, vendas.valor_venda FROM itemVenda INNER JOIN produtos ON itemvenda.produtos_id_produto = produtos.id_produto INNER JOIN vendas ON itemvenda.vendas_id_venda = vendas.id_venda INNER JOIN formaPagamento ON vendas.formaPagamento_id_formaPagamento = formapagamento.id_formaPagamento;");
+                    $stmt = $conexao->prepare("SELECT vendas.id_venda, produtos.nome_produto, vendas.quantidade_venda, formaPagamento.nome_formaPagamento, vendas.valor_venda FROM vendas INNER JOIN produtos ON vendas.produtos_id_produto = produtos.id_produto INNER JOIN formaPagamento ON vendas.formaPagamento_id_formaPagamento = formapagamento.id_formaPagamento;");
                     if ($stmt->execute()) {
                         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                             echo "<tr>";
-                            echo "<td>".$rs->nome_produto."</td><td>".$rs->quantidade_venda."</td><td>".$rs->nome_formaPagamento."</td><td>".$rs->valor_venda."</td><td><center><a href=\"\">[Alterar]</a>"."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"."<a href=\"\">[Excluir]</a></center></td>";
+                            echo "<td>".$rs->nome_produto."</td>";
+                            echo "<td>".$rs->quantidade_venda."</td>";
+                            echo "<td>".$rs->nome_formaPagamento."</td>";
+                            echo "<td>".$rs->valor_venda."</td>";
+                            echo "<td>
+                                <center>
+                                    <a href=\"updateVendas.php?id=".$rs->id_venda."\">[Alterar]</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href=\"deleteVendas.php?id=".$rs->id_venda."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a>
+                                </center>
+                                </td>";
                             echo "</tr>";
                         }
                     } else {
