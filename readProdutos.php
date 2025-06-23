@@ -65,7 +65,7 @@ include_once 'conexao.php';
                 </tr>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, produtos.preco,categorias.nome_categoria, marcas.nome_marca FROM produtos INNER JOIN categorias ON produtos.categorias_id_categoria = categorias.id_categoria INNER JOIN marcas ON produtos.marcas_id_marca = marcas.id_marca");
+                        $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, produtos.preco, categorias.nome_categoria, marcas.nome_marca FROM produtos INNER JOIN categorias ON produtos.categorias_id_categoria = categorias.id_categoria INNER JOIN marcas ON produtos.marcas_id_marca = marcas.id_marca");
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";

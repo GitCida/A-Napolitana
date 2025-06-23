@@ -43,45 +43,55 @@ include 'conexao.php';
     </aside>
     <section>
         <h1>
-            Cadastrar produto
+            Registrar venda
         </h1>
         <form action="createVendas.php?act=save" method="post">
             <input type="hidden" name="id">
             <label for="nomeProduto">Selecione o produto:</label>
-            <select id="nomeProduto" name="nomeProduto" required>
-                <option></option>
-                    <?php 
-                        try{
-                            $stmt = $conexao->prepare("SELECT id_produto, nome_produto FROM produtos");
-                            $stmt->execute();
-                            while($row = $stmt->fetch()) {
-                                echo '<option value="' . htmlspecialchars($row['id_produto']) . '">' . htmlspecialchars($row['nome_produto']) . '</option>';
+            <div>
+                <select class="inputVenda" id="nomeProduto" name="nomeProduto" required>
+                    <option></option>
+                        <?php 
+                            try{
+                                $stmt = $conexao->prepare("SELECT id_produto, nome_produto FROM produtos");
+                                $stmt->execute();
+                                while($row = $stmt->fetch()) {
+                                    echo '<option value="' . htmlspecialchars($row['id_produto']) . '">' . htmlspecialchars($row['nome_produto']) . '</option>';
+                                }
+                            } catch (PDOException $erro){
+                                echo 'Erro ao buscar produto: ' . $erro->getMessage();
                             }
-                        } catch (PDOException $erro){
-                            echo 'Erro ao buscar produto: ' . $erro->getMessage();
-                        }
-                    ?>
-            </select>
+                        ?>
+                </select>
+            </div>
             <label for="quantidade">Quantidade:</label>
-            <input type="number" name="quantidade" id="quantidade" step="1" required>
+            <div>
+                <input class="inputVenda" type="number" name="quantidade" id="quantidade" step="1" required>
+            </div>
             <label for="pagamento">Forma de pagamento:</label>
-            <select id="pagamento" name="pagamento" required>
-                <option></option>
-                    <?php 
-                        try{
-                            $stmt = $conexao->prepare("SELECT id_formaPagamento, nome_formaPagamento FROM formaPagamento");
-                            $stmt->execute();
-                            while($row = $stmt->fetch()) {
-                                echo '<option value="' . htmlspecialchars($row['id_formaPagamento']) . '">' . htmlspecialchars($row['nome_formaPagamento']) . '</option>';
+            <div>
+            <select class="inputVenda" id="pagamento" name="pagamento" required>
+                    <option></option>
+                        <?php 
+                            try{
+                                $stmt = $conexao->prepare("SELECT id_formaPagamento, nome_formaPagamento FROM formaPagamento");
+                                $stmt->execute();
+                                while($row = $stmt->fetch()) {
+                                    echo '<option value="' . htmlspecialchars($row['id_formaPagamento']) . '">' . htmlspecialchars($row['nome_formaPagamento']) . '</option>';
+                                }
+                            } catch (PDOException $erro){
+                                echo 'Erro ao buscar produto: ' . $erro->getMessage();
                             }
-                        } catch (PDOException $erro){
-                            echo 'Erro ao buscar produto: ' . $erro->getMessage();
-                        }
-                    ?>
-            </select>
+                        ?>
+                </select>
+            </div>
             <label for="valorTotal">Valor total:</label>
-            <input type="number" name="valorTotal" id="valorTotal" step="0.01">
-            <input type="submit" value="REGISTRAR">
+            <div>
+            <input class="inputVenda" type="number" name="valorTotal" id="valorTotal" step="0.01">
+            </div>
+            <div id="btnsForm">
+                <input type="submit" value="Registrar" id="btnCadastrar">
+            </div>
         </form>
     </section>
     <footer>

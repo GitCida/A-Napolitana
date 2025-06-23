@@ -48,40 +48,50 @@ include 'conexao.php';
         <form action="createProdutos.php?act=save" method="post">
             <input type="hidden" name="id">
             <label for="nomeProduto">Nome do produto:</label>
-            <input type="text" name="nomeProduto" id="nomeProduto" required>
+            <div>
+                <input class="inputProduto" type="text" name="nomeProduto" id="nomeProduto" required>
+            </div>
             <label for="categoria">Selecione a categoria:</label>
-            <select id="categoria" name="categoria" required>
-                <option></option>
-                    <?php 
-                        try{
-                            $stmt = $conexao->prepare("SELECT id_categoria, nome_categoria FROM categorias");
-                            $stmt->execute();
-                            while($row = $stmt->fetch()) {
-                                echo '<option value="' . htmlspecialchars($row['id_categoria']) . '">' . htmlspecialchars($row['nome_categoria']) . '</option>';
+            <div>
+                <select class="inputProduto" id="categoria" name="categoria" required>
+                    <option></option>
+                        <?php 
+                            try{
+                                $stmt = $conexao->prepare("SELECT id_categoria, nome_categoria FROM categorias");
+                                $stmt->execute();
+                                while($row = $stmt->fetch()) {
+                                    echo '<option value="' . htmlspecialchars($row['id_categoria']) . '">' . htmlspecialchars($row['nome_categoria']) . '</option>';
+                                }
+                            } catch (PDOException $erro){
+                                echo 'Erro ao buscar nome da categoria: ' . $erro->getMessage();
                             }
-                        } catch (PDOException $erro){
-                            echo 'Erro ao buscar nome da categoria: ' . $erro->getMessage();
-                        }
-                    ?>
-            </select>
+                        ?>
+                </select>
+            </div>
             <label for="preco">Preço (R$):</label>
-            <input type="number" name="preco" id="preco" step="0.01" required>
+            <div>
+                <input class="inputProduto" type="number" name="preco" id="preco" step="0.01" style="appearance: none; -webkit-appearance: none; -moz-appearance: none;" required>
+            </div>
             <label for="marca">Selecione a marca:</label>
-            <select id="marca" name="marca" required>
-                <option></option>
-                <?php 
-                        try{
-                            $stmt = $conexao->prepare("SELECT id_marca, nome_marca FROM marcas");
-                            $stmt->execute();
-                            while($row = $stmt->fetch()) {
-                                echo '<option value="' . htmlspecialchars($row['id_marca']) . '">' . htmlspecialchars($row['nome_marca']) . '</option>';
+            <div>
+                <select class="inputProduto" id="marca" name="marca" required>
+                    <option></option>
+                    <?php 
+                            try{
+                                $stmt = $conexao->prepare("SELECT id_marca, nome_marca FROM marcas");
+                                $stmt->execute();
+                                while($row = $stmt->fetch()) {
+                                    echo '<option value="' . htmlspecialchars($row['id_marca']) . '">' . htmlspecialchars($row['nome_marca']) . '</option>';
+                                }
+                            } catch (PDOException $erro){
+                                echo 'Erro ao buscar nome da categoria: ' . $erro->getMessage();
                             }
-                        } catch (PDOException $erro){
-                            echo 'Erro ao buscar nome da categoria: ' . $erro->getMessage();
-                        }
-                    ?>
-            </select>
-            <input type="submit" value="CADASTRAR">
+                        ?>
+                </select>
+            </div>
+            <div id="btnsForm">
+                <input id="btnCadastrar" type="submit" value="Cadastrar">
+            </div>
         </form>
     </section>
     <footer>

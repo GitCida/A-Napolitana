@@ -24,6 +24,15 @@ header {
     top: 0;
 }
 
+h1 {
+    font-family: 'Caprasimo', sans-serif;
+    font-size: 2.5em;
+    color: #40241A;
+    font-weight: 100;
+    margin-top: 40px;
+    text-align: center;
+}
+
 .logo{
 display: flex;
 }
@@ -97,8 +106,33 @@ aside {
     cursor: pointer;
 }
 
+.inputVenda {
+    border: none;
+    border-radius: 10px;
+    padding: 20px 90px 20px 10px;
+    background-color: #FFF9F6;
+    margin: 0 2rem 20px 0;
+    outline: none;
+    color: #67301D;
+    font-size: 17px;
+    width: 700px;
+    max-width: 700px;
+    font-family: 'Baloo 2', sans-serif;
+}
+
+label {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 20px;
+    color: #40241A;
+    margin-bottom: 10px;
+}
+
 section {
-    text-align: end;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 #btnCadastrar {
@@ -118,12 +152,12 @@ section {
 }
 
 #linkProdutos {
-    color: #C7B3AC;
-    border-color: #C7B3AC;
+    color: #40241A;
 }
 
 #linkVendas {
-    color: #40241A;
+    color: #C7B3AC;
+    border-color: #C7B3AC;
 }
 
 #linkVendas:hover {
@@ -134,6 +168,13 @@ background-color: #C7B3AC;
     color: #40241A;
     font-family: 'Caprasimo', sans-serif;
 }
+
+#btnsForm {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+}
+
 
 footer {
     width: 100%;
