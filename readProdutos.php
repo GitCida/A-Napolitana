@@ -51,51 +51,46 @@ include_once 'conexao.php';
                 echo '<div class="mensagem-sucesso">' . htmlspecialchars($_GET['msg']) . '</div>';
             }
         ?>
-
-        <a href="http://localhost/aNapolitana/formCreateProdutos.php">
-            <button id="btnAdicionar">ADICIONAR</button>
-        </a>
-        <table border="1">
-            <tr>
-                <th>Produto</th>
-                <th>Categoria</th>
-                <th>Preço (R$)</th>
-                <th>Marca</th>
-                <th>Ações</th>
-            </tr>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, produtos.preco,categorias.nome_categoria, marcas.nome_marca FROM produtos INNER JOIN categorias ON produtos.categorias_id_categoria = categorias.id_categoria INNER JOIN marcas ON produtos.marcas_id_marca = marcas.id_marca");
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>".$rs->nome_produto."</td>";
-                            echo "<td>".$rs->nome_categoria."</td>";
-                            echo "<td>".$rs->preco."</td>";
-                            echo "<td>".$rs->nome_marca."</td>";
-                            echo "<td>
-                                <center>
-                                    <a href=\"updateProdutos.php?id=".$rs->id_produto."\">[Alterar]</a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href=\"deleteProdutos.php?id=".$rs->id_produto."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a>
-                                </center>
-                                </td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: ".$erro->getMessage();
-                }
-            ?>
-</table>
-    </section>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 A Napolitana. Todos os direitos reservados.</p>
-            <p>Desenvolvido por 27 - Maria Aparecida Carvalho de Oliveira</p>
+        <div class="btnContainer">
+            <a href="formCreateProdutos.php" id="btnAdicionar">ADICIONAR</a>
         </div>
-    </footer>
+        <div id="tabela">
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Preço (R$)</th>
+                    <th>Marca</th>
+                    <th>Ações</th>
+                </tr>
+                <?php
+                    try {
+                        $stmt = $conexao->prepare("SELECT produtos.id_produto, produtos.nome_produto, produtos.preco,categorias.nome_categoria, marcas.nome_marca FROM produtos INNER JOIN categorias ON produtos.categorias_id_categoria = categorias.id_categoria INNER JOIN marcas ON produtos.marcas_id_marca = marcas.id_marca");
+                        if ($stmt->execute()) {
+                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                echo "<tr>";
+                                echo "<td>".$rs->nome_produto."</td>";
+                                echo "<td>".$rs->nome_categoria."</td>";
+                                echo "<td>".$rs->preco."</td>";
+                                echo "<td>".$rs->nome_marca."</td>";
+                                echo "<td>
+                                    <center>
+                                        <a href=\"updateProdutos.php?id=".$rs->id_produto."\">[Alterar]</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href=\"deleteProdutos.php?id=".$rs->id_produto."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a>
+                                    </center>
+                                    </td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                        }
+                    } catch (PDOException $erro) {
+                        echo "Erro: ".$erro->getMessage();
+                    }
+                ?>
+            </table>
+        </div>
+    </section>
 </body>
 </html>

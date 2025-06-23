@@ -49,9 +49,7 @@ include 'conexao.php';
             }
         ?>
 
-        <a href="http://localhost/aNapolitana/formCreateVendas.php">
-            <button id="btnAdicionar">ADICIONAR</button>
-        </a>
+        <a id="btnAdicionar" href="http://localhost/aNapolitana/formCreateVendas.php">ADICIONAR</a>
         <table border="1">
             <tr>
                 <th>Produto</th>
@@ -88,11 +86,5 @@ include 'conexao.php';
             ?>
 </table>
     </section>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 A Napolitana. Todos os direitos reservados.</p>
-            <p>Desenvolvido por 27 - Maria Aparecida Carvalho de Oliveira</p>
-        </div>
-    </footer>
 </body>
 </html>
