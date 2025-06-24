@@ -46,11 +46,13 @@ include_once 'conexao.php';
         </div>
     </aside>
     <section>
+        <div>
         <?php
             if (isset($_GET['msg'])) {
                 echo '<div class="mensagem-sucesso">' . htmlspecialchars($_GET['msg']) . '</div>';
             }
         ?>
+        </div>
         <div class="btnContainer">
             <a href="formCreateProdutos.php" id="btnAdicionar">ADICIONAR</a>
         </div>
@@ -75,7 +77,7 @@ include_once 'conexao.php';
                                 echo "<td>".$rs->nome_marca."</td>";
                                 echo "<td>
                                     <center>
-                                        <a href=\"updateProdutos.php?id=".$rs->id_produto."\">[Alterar]</a>
+                                        <a href=\"formUpdateProdutos.php?id=".$rs->id_produto."\">[Alterar]</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href=\"deleteProdutos.php?id=".$rs->id_produto."\" onclick=\"return confirm('Tem certeza que deseja excluir este produto?');\">[Excluir]</a>
                                     </center>

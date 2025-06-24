@@ -7,7 +7,7 @@ include 'conexao.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar e gerenciar produtos</title>
+    <title>Cadastrar e gerenciar produtos</title>
     <link rel="stylesheet" href="assets/styleCreateProdutos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,7 @@ include 'conexao.php';
             Cadastrar produto
         </h1>
         <form action="createProdutos.php?act=save" method="post">
-            <input type="hidden" name="id">
+            <input type="hidden" name="id_produto" id="id_produto">
             <label for="nomeProduto">Nome do produto:</label>
             <div>
                 <input class="inputProduto" type="text" name="nomeProduto" id="nomeProduto" required>
