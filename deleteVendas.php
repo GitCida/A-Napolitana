@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
         $stmt->bindValue(':id', $idProduto);
 
         if ($stmt->execute()) {
-            header("Location: readProdutos.php?msg=Produto excluído com sucesso!");
+            header("Location: readVendas.php?msg=Produto excluído com sucesso!");
             exit;
         } else {
             echo "Erro ao tentar excluir o produto.";

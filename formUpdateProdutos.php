@@ -15,8 +15,6 @@ if(isset($_GET['id_produto']) && !empty($_GET['id_produto'])) {
         exit;  
     }
 }
-var_dump($id);
-var_dump($produto);
 
 ?>
 <!DOCTYPE html>
@@ -70,7 +68,7 @@ var_dump($produto);
             </div>
             <label for="categoria">Selecione a categoria:</label>
             <div>
-                <select class="inputProduto" id="categoria" name="categoria" value="<?php echo $produto['nome_categoria']?>" required>
+                <select class="inputProduto" id="categoria" name="categoria" required>
                     <option></option>
                         <?php 
                             try{
@@ -91,7 +89,7 @@ var_dump($produto);
             </div>
             <label for="marca">Selecione a marca:</label>
             <div>
-                <select class="inputProduto" id="marca" name="marca" value="<?php echo $produto['nome_marca']?>" required>
+                <select class="inputProduto" id="marca" name="marca" required>
                     <option></option>
                     <?php 
                             try{
